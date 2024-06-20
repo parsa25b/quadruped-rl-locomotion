@@ -124,13 +124,15 @@ def test(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--run", type=str, required=True, choices=["train", "test"])
+    parser = argparse.ArgumentParser(
+        description="Script to train or test the reinforcement learning agent"
+    )
     parser.add_argument(
-        "--run_name",
+        "--mode",
         type=str,
-        default=None,
-        help="Custom name of the run. Note that all runs are saved in the 'models' directory and have the training time prefixed.",
+        required=True,
+        choices=["train", "test"],
+        help="Operation mode: 'train' to train the agent, 'test' to evaluate the agent.",
     )
     parser.add_argument(
         "--num_parallel_envs",
