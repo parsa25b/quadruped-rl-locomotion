@@ -5,7 +5,7 @@ A custom gymnasium environment for training quadruped locomotion using reinforce
 There are two MJCF models provided for the Go1 robot. One tuned for position control with a proportional controller, and one model which directly takes in torque values for end-to-end training. This repository mainly focues on the model with position controller.
 
 ### Trained Model
-[Unitree Go1 walking](https://github.com/parsa25b/quadruped-rl-locomotion/blob/main/recordings/2024-04-28_22-10-59%3D1_pos_ctrl_20mil_iter_walking_with_normal_steps-episode-0.mp4)
+![Unitree Go1 walking](https://github.com/parsa25b/quadruped-rl-locomotion/blob/main/recordings/2024-04-28_22-10-59%3D1_pos_ctrl_20mil_iter_walking_with_normal_steps-episode-0.mp4)
 
 ## Setup
 ```bash
