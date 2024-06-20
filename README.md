@@ -2,13 +2,10 @@
 
 A custom gymnasium environment for training quadruped locomotion using reinforcement learning in the Mujoco simulator. The environment has been set up for the Unitree Go1 robot, however, it can be easily extended to train other robots as well. 
 
-There are two MJCF models provided for the Go1 robot. One tuned for position control with a proportional controller, and one model which directly takes in torque values for end-to-end training.
+There are two MJCF models provided for the Go1 robot. One tuned for position control with a proportional controller, and one model which directly takes in torque values for end-to-end training. This repository mainly focues on the model with position controller.
 
-### Trained Model with Motor Torque Actions
-https://github.com/nimazareian/quadruped-rl-locomotion/assets/28585597/262b7812-0b8f-4758-aedd-a429f743fb69
-
-### Trained Model with Position Actions and a Proportional Controller
-https://github.com/nimazareian/quadruped-rl-locomotion/assets/28585597/f0eddef1-7bc4-4d7a-adc5-35e630ced5d4
+### Trained Model
+[Unitree Go1 walking](https://github.com/parsa25b/quadruped-rl-locomotion/blob/main/recordings/2024-04-28_22-10-59%3D1_pos_ctrl_20mil_iter_walking_with_normal_steps-episode-0.mp4)
 
 ## Setup
 ```bash
@@ -16,21 +13,22 @@ python -m pip install -r requirements.txt
 ```
 
 ## Train
+
 ```bash
-python train.py --run train
+python agent.py --mode train
 ```
 
 ## Displaying Trained Models 
 
 ```bash
-python train.py --run test --model_path <path to model zip file>
+python agent.py --mode train --model_path <path to model zip file>
 ```
-For example, to run a pretrained model which outputs motor torques and has the robot desired velocity set to <x=1, y=0>, you can run:
+
+For example, to run a pretrained model which outputs motor position and has the robot desired velocity set to <Vx=1, Vy=0, Wz=0>, you can run:
+
 ```bash
-python train.py --run test --model_path .\models\2024-04-16_10-11-57-x=1_torque_ctrl_fixed_joint_range_5mill_iter_working_well\final_model.zip
+python train.py --run test --model_path .\models\2024-04-28_22-10-59=1_pos_ctrl_20mil_iter_walking_with_normal_steps\final_model.zip
 ```
-> [!NOTE]  
-> Some of the trained models in the `models/` directory were trained on older version of the environment (different observation space), as a result, they may not work on the latest code on main. For the above example to work as expected, you could try running it from the following commit: `4756dee0ffe7b4e5e78a60195c47d5427998b2a6`
 
 <details>
   <summary>Additional arguments for customizing training and testing</summary>
